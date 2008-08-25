@@ -1,0 +1,27 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Local</th>
+    <th>Início</th>
+    <th>Fim</th>
+    <th>Descrição</th>
+  </tr>
+
+<% for event in @events %>
+  <tr>
+		<% if event.url? %>
+    <td><%= link_to event.name, event.url %></td>
+		<% else %>
+		<td><%=h event.name %></td>
+		<% end %>
+    <td><%=h event.location %></td>
+    <td><%=h event.dtstart %></td>
+    <td><%=h event.dtend %></td>
+    <td><%=h event.description %></td>
+    <td><%= link_to 'Mostrar', events_path+'/view/'+event.id.to_s %></td>
+  </tr>
+<% end %>
+</table>
+

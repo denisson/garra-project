@@ -1,0 +1,60 @@
+<p>
+  <b>Nome:</b>
+  <%=h @event.name %>
+</p>
+
+<p>
+  <b>Local:</b>
+  <%=h @event.location %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @event.url %>
+</p>
+
+<p>
+  <b>Data Início:</b>
+  <%=h @event.dtstart %>
+</p>
+
+<p>
+  <b>Encerramento:</b>
+  <%=h @event.dtend %>
+</p>
+
+<p>
+  <b>Timezone:</b>
+  <%=h @event.timezone %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%=h @event.description %>
+</p>
+<%= link_to 'OK. Voltar', events_path+'/list' %>
+<br/><br/>
+<h2>Comentários do Evento</h2>
+
+<h3>Mande seu comentário</h3>
+<p>Como você acha que vai ser esse evento, tem alguma sugestão? Você participou desse evento, tirou fotos, quer falar o que achou? Não participou mais quer expressar sua opinião? Utilize o formulário abaixo e mostre para os outros que você fez parte desse evento.</p>
+
+
+<% form_for :comment, :url => { :action => "add_comment"} do |f| %>
+  <%= error_messages_for :comment %>
+	<%= f.hidden_field :commentable_id , :value => @event.id %>
+	<p>
+  Título: <%= f.text_field :title %><br />
+	</p>
+	<p>
+  Comentário : <%= f.text_area :comment %><br />
+	</p>
+	    <%= f.submit "Enviar" %>
+<% end %>
+
+
+<% for comment in @comments %>
+  	<h4><%=h comment.title %></h4>
+  	<p><%=h comment.comment %></p>
+		
+<% end %>

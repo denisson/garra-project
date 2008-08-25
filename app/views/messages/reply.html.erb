@@ -1,0 +1,14 @@
+<h1>Respondendo a mensagem</h1>
+
+<%= error_messages_for :message %>
+
+<% form_for(@message) do |f| %>
+
+	<%= render :partial => 'form', :locals => {:f => f} %>
+
+  <p>
+    <%= f.submit "Enviar resposta" %>
+  </p>
+<% end %>
+
+<%= link_to 'Ops. Voltar', messages_path %>
