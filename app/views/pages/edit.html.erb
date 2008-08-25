@@ -1,4 +1,4 @@
-<h1>Editing page</h1>
+<h1>Você está alterando a área: <%= @page.name%></h1>
 
 <%= error_messages_for :page %>
 
@@ -7,9 +7,9 @@
 	<%= render :partial => 'form', :locals => {:f => f} %>
 
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Tudo correto, atualize." %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Mostrar', @page %> |
+<%= link_to 'Ops! Volta', pages_path %>

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   before_filter :set_pagetitle
   
   def set_pagetitle
-    @pagetitle = "Page Administration"
+    @pagetitle = "GARRA - Administração das páginas"
   end
   
   # GET /pages
@@ -53,7 +53,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        flash[:notice] = 'Page was successfully created.'
+        flash[:notice] = 'Página criada com sucesso.'
         format.html { redirect_to(@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        flash[:notice] = 'Page was successfully updated.'
+        flash[:notice] = 'Página atualizada com sucesso.'
         format.html { redirect_to(@page) }
         format.xml  { head :ok }
       else

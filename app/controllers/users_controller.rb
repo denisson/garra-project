@@ -6,7 +6,7 @@ class UsersController < ApplicationController
    before_filter :set_pagetitle
    
    def set_pagetitle 
-     @pagetitle = 'User Administration'
+     @pagetitle = 'GARRA - Administração de Usuários'
    end
 
    def index
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
        @user = User.find(params[:id])
        
        if @user.update_attributes(params[:user])
-         flash[:notice] = 'User was successfully updated.'
+         flash[:notice] = 'Informações do usuário alteradas com sucesso.'
          redirect_to(user_path(@user))
        else
          render :action => 'edit'
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     if @user.errors.empty?
       self.current_user = @user
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!"
+      flash[:notice] = "Obrigado! Agora você faz parte dessa família."
     else
       render :action => 'new'
     end

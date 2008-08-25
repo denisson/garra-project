@@ -1,32 +1,30 @@
-<h1>Listing events</h1>
+<h1>Células, eventos, festas...</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Url</th>
-    <th>Dtstart</th>
-    <th>Dtend</th>
-    <th>Timezone</th>
-    <th>Description</th>
+    <th>Nome</th>
+    <th>Local</th>
+    <th>Início</th>
+    <th>Fim</th>
+    <th>Descrição</th>
   </tr>
 
 <% for event in @events %>
   <tr>
-    <td><%=h event.name %></td>
+		<% if event.url? %>
+    <td><%= link_to event.name, event.url %></td>
+		<% else %>
+		<td><%=h event.name %></td>
+		<% end %>
     <td><%=h event.location %></td>
-    <td><%=h event.url %></td>
     <td><%=h event.dtstart %></td>
     <td><%=h event.dtend %></td>
-    <td><%=h event.timezone %></td>
     <td><%=h event.description %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', event %></td>
+    <td><%= link_to 'Editar', edit_event_path(event) %></td>
+    <td><%= link_to 'Excluir?', event, :confirm => "Essa operação não pode ser desfeita, você tem certeza que quer excluir o evento '#{event.name}'?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New event', new_event_path %>
+<%= link_to 'Quero criar um novo', new_event_path %>

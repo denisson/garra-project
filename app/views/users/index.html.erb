@@ -1,4 +1,4 @@
-<h1>Listing Users</h1>
+<h1>Listando usuários cadastrados</h1>
 
 <table>
   <tr>
@@ -10,10 +10,9 @@
     <tr>
       <td><%=h user.login %></td>
       <td><%=h user.email %></td>
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Delete', user, 
-          :confirm => "Are you sure you want to delete '#{user.login}'?",
+      <td><%= link_to 'Mostrar', user %></td>
+      <td><%= link_to 'Editar', edit_user_path(user) %></td>
+      <td><%= link_to 'Excluir?', user, :confirm => "Essa operação não pode ser desfeita, você tem certeza que deseja excluir o usuário '#{user.login}'?",
           :method => :delete %></td>
     </tr>
   <% end %>
@@ -21,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Criar novo usuário', new_user_path %>

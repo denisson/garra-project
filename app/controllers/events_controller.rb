@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
-  
-  before_filter :login_required
-     
+  before_filter :login_required, :except => [:list, :show, :view]  
+
   # GET /events
   # GET /events.xml
   def index
@@ -9,6 +8,18 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.xml  { render :xml => @events }
+    end
+  end
+
+  # GET /events/list
+  # GET /events/list.xml
+  def list
+    @events = Event.find(:all)
+    get_page_metadata
+
+    respond_to do |format|
+      format.html # list.html.erb
       format.xml  { render :xml => @events }
     end
   end
@@ -22,6 +33,45 @@ class EventsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @event }
     end
+  end
+
+  # GET /events/1
+  # GET /events/1.xml
+  def view
+    @event = Event.find(params[:id])
+    
+    @comments = Comment.find_comments_for_commentable('Event',@event.id)
+
+    #   event = Event.new
+       # comment = Comment.new(:title => "Titulo", :comment => "commentStr", :user_id => "1")
+       # comment.comment = 'Some comment'
+       # @event.comments << comment
+       # debugger
+
+      # Event.add_comment comment
+      
+    respond_to do |format|
+        format.html
+        format.xml  { render :xml => @event }
+    end
+  end
+  
+  def add_comment
+    comment = Comment.new(params[:comment])
+    @event = Event.find(comment.commentable_id)
+    
+    if @event.comments << comment
+      flash[:notice] = 'Obrigado por comentar, volte sempre.'
+      redirect_to('/events/view/'+comment.commentable_id.to_s)
+    else
+=begin
+      /**
+       * @todo Fix the error message for comments
+       */
+=end
+      redirect_to('/events/view/'+comment.commentable_id.to_s)
+    end
+    
   end
 
   # GET /events/new
@@ -47,7 +97,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        flash[:notice] = 'Event was successfully created.'
+        flash[:notice] = 'Evento criado com sucesso.'
         format.html { redirect_to(@event) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
@@ -64,7 +114,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        flash[:notice] = 'Event was successfully updated.'
+        flash[:notice] = 'O evento foi alterado com sucesso.'
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
       else

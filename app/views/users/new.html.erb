@@ -6,11 +6,12 @@
 <p><label for="email">Email</label><br/>
 <%= f.text_field :email %></p>
 
-<p><label for="password">Password</label><br/>
+<p><label for="password">Senha</label><br/>
 <%= f.password_field :password %></p>
 
-<p><label for="password_confirmation">Confirm Password</label><br/>
+<p><label for="password_confirmation">Por favor, confirme a senha!</label><br/>
 <%= f.password_field :password_confirmation %></p>
 
-<p><%= submit_tag 'Sign up' %></p>
+<p><%= submit_tag 'Tudo certo. Envie' %></p>
 <% end -%>
+<%= link_to 'Ops, Volta', users_path %>

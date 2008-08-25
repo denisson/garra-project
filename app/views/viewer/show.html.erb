@@ -10,7 +10,7 @@
 
 <% if logged_in? %>
 
-	<a href='#' id='edit'>Edit This Page</a>
+	<a href='#' id='edit'>Altere essa página</a>
 
 	<%= in_place_editor_field :page, 'body', {}, {:rows => 20, :cols => 80, :external_control => 'edit', :external_control_only => true,
 	:load_text_url => {:controller => 'viewer', :action => 'get_unformatted_text', :id => @page.id}} %>

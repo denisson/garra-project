@@ -1,10 +1,10 @@
-<h1>Listing pages</h1>
+<h1>Listagem das Áreas do Site</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Title</th>
-    <th>Body</th>
+    <th>Nome</th>
+    <th>Título</th>
+    <th>Corpo</th>
 		<th>Admin?</th>
   </tr>
 
@@ -13,14 +13,14 @@
     <td><%=h page.name %></td>
     <td><%=h page.title %></td>
     <td><%=h page.body %></td>
-		<td><%= page.admin? ? "TRUE" : "FALSE" %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= page.admin? ? "SIM" : "NÃO" %></td>
+    <td><%= link_to 'Ver', page %></td>
+    <td><%= link_to 'Editar', edit_page_path(page) %></td>
+    <td><%= link_to 'Excluir?', page, :confirm => "Essa operação não pode ser desfeita, você tem certeza que quer excluir a área '#{page.name}'?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New page', new_page_path %>
+<%= link_to 'Nova Área', new_page_path %>

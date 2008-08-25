@@ -1,47 +1,15 @@
-<h1>Editing event</h1>
+<h1>Você está alterando o evento: <%= @event.name%></h1>
 
 <%= error_messages_for :event %>
 
 <% form_for(@event) do |f| %>
-  <p>
-    <b>Name</b><br />
-    <%= f.text_field :name %>
-  </p>
+	
+	<%= render :partial => 'form', :locals => {:f => f} %>
 
   <p>
-    <b>Location</b><br />
-    <%= f.text_field :location %>
-  </p>
-
-  <p>
-    <b>Url</b><br />
-    <%= f.text_field :url %>
-  </p>
-
-  <p>
-    <b>Dtstart</b><br />
-    <%= f.datetime_select :dtstart %>
-  </p>
-
-  <p>
-    <b>Dtend</b><br />
-    <%= f.datetime_select :dtend %>
-  </p>
-
-  <p>
-    <b>Timezone</b><br />
-    <%= f.text_field :timezone %>
-  </p>
-
-  <p>
-    <b>Description</b><br />
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Pode enviar" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Quero ver', @event %> |
+<%= link_to 'Ops! Volta', events_path %>

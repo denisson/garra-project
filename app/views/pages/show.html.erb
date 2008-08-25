@@ -1,22 +1,22 @@
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @page.name %>
 </p>
 
 <p>
-  <b>Title:</b>
+  <b>Título:</b>
   <%=h @page.title %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <b>Corpo:</b>
   <%=h @page.body %>
 </p>
 
 <p>
   <b>Admin?:</b>
-<%= @page.admin? ? "TRUE" : "FALSE" %>
+<%= @page.admin? ? "SIM" : "NÃO" %>
 </p>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Quero alterar', edit_page_path(@page) %> |
+<%= link_to 'OK. Volta', pages_path %>

@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :links, :collection => {:list => :get}
 
-  map.resources :events
+  map.resources :events, :collection => {:list => :get, :view => :get}
 
   map.resources :users
 

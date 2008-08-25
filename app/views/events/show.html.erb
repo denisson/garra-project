@@ -1,10 +1,10 @@
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @event.name %>
 </p>
 
 <p>
-  <b>Location:</b>
+  <b>Local:</b>
   <%=h @event.location %>
 </p>
 
@@ -14,12 +14,12 @@
 </p>
 
 <p>
-  <b>Dtstart:</b>
+  <b>Data Início:</b>
   <%=h @event.dtstart %>
 </p>
 
 <p>
-  <b>Dtend:</b>
+  <b>Encerramento:</b>
   <%=h @event.dtend %>
 </p>
 
@@ -29,11 +29,10 @@
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Descrição:</b>
   <%=h @event.description %>
 </p>
 
-<%= restful_comments_for @event %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Preciso editar', edit_event_path(@event) %> |
+<%= link_to 'OK. Volta', events_path %>

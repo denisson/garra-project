@@ -1,5 +1,5 @@
 <p>
-  <b>Name:</b>
+  <b>Nome:</b>
   <%=h @message.name %>
 </p>
 
@@ -9,25 +9,15 @@
 </p>
 
 <p>
-  <b>Company:</b>
-  <%=h @message.company %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%=h @message.phone %>
-</p>
-
-<p>
-  <b>Subject:</b>
+  <b>Assunto:</b>
   <%=h @message.subject %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <b>Mensagem:</b>
   <%=h @message.body %>
 </p>
 
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<%= link_to 'Responder Agora', messages_path+'/reply/'+@message.id.to_s %> |
+<%= link_to 'Ok. Voltar', messages_path %>
